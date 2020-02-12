@@ -16,7 +16,7 @@ public class Rue  implements Serializable {
 	private String nom;
 	@ManyToOne
 	private Quartier quartier;
-	@OneToMany(mappedBy = "locale")
+	@OneToMany(mappedBy = "rue")
 	private List<Locale> locales;
 	public Long getId() {
 		return id;
