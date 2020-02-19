@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class TaxeBoisson  implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,6 +25,9 @@ public class TaxeBoisson  implements Serializable {
 	private double montantTotale;
 	@ManyToOne
 	private Locale locale;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@ManyToOne
 	private Redevable redevable;
 	private double profit;
@@ -119,6 +126,73 @@ public class TaxeBoisson  implements Serializable {
 				+ ", montantRetard=" + montantRetard + ", moisRetard=" + moisRetard + ", montantTotale=" + montantTotale
 				+ ", locale=" + locale + ", redevable=" + redevable + ", profit=" + profit + ", tauxTaxeBoisson="
 				+ tauxTaxeBoisson + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + annee;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((locale == null) ? 0 : locale.hashCode());
+		result = prime * result + moisRetard;
+		long temp;
+		temp = Double.doubleToLongBits(montantBase);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(montantRetard);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(montantTotale);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(profit);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((redevable == null) ? 0 : redevable.hashCode());
+		result = prime * result + ((tauxTaxeBoisson == null) ? 0 : tauxTaxeBoisson.hashCode());
+		result = prime * result + trim;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TaxeBoisson other = (TaxeBoisson) obj;
+		if (annee != other.annee)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (locale == null) {
+			if (other.locale != null)
+				return false;
+		} else if (!locale.equals(other.locale))
+			return false;
+		if (moisRetard != other.moisRetard)
+			return false;
+		if (Double.doubleToLongBits(montantBase) != Double.doubleToLongBits(other.montantBase))
+			return false;
+		if (Double.doubleToLongBits(montantRetard) != Double.doubleToLongBits(other.montantRetard))
+			return false;
+		if (Double.doubleToLongBits(montantTotale) != Double.doubleToLongBits(other.montantTotale))
+			return false;
+		if (Double.doubleToLongBits(profit) != Double.doubleToLongBits(other.profit))
+			return false;
+		if (redevable == null) {
+			if (other.redevable != null)
+				return false;
+		} else if (!redevable.equals(other.redevable))
+			return false;
+		if (tauxTaxeBoisson == null) {
+			if (other.tauxTaxeBoisson != null)
+				return false;
+		} else if (!tauxTaxeBoisson.equals(other.tauxTaxeBoisson))
+			return false;
+		if (trim != other.trim)
+			return false;
+		return true;
 	}
 	
 	
