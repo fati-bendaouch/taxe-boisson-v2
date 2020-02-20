@@ -15,7 +15,7 @@ public class Secteur implements Serializable {
 	private Long id;
 	private String nom;
 	@OneToMany(mappedBy = "secteur")
-	private List<Quartier> quartiers;
+	//private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
 	}
@@ -28,17 +28,17 @@ public class Secteur implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public List<Quartier> getQuartiers() {
+	/*public List<Quartier> getQuartiers() {
 		return quartiers;
-	}
-	public void setQuartiers(List<Quartier> quartiers) {
+	}*/
+	/*public void setQuartiers(List<Quartier> quartiers) {
 		this.quartiers = quartiers;
-	}
-	public Secteur(Long id, String nom, List<Quartier> quartiers) {
+	}*/
+	public Secteur(Long id, String nom) {
 		super();
 		this.id = id;
 		this.nom = nom;
-		this.quartiers = quartiers;
+		//this.quartiers = quartiers;
 	}
 	public Secteur() {
 		super();
@@ -46,6 +46,6 @@ public class Secteur implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Secteur [id=" + id + ", nom=" + nom + ", quartiers=" + quartiers + "]";
+		return "Secteur [id=" + id + ", nom=" + nom + ", quartiers=" +"]";
 	}
 	}

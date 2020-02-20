@@ -1,0 +1,41 @@
+package com.example.taxBoisson.ws;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.taxBoisson.bean.Secteur;
+import com.example.taxBoisson.service.SecteurService;
+
+@RestController
+@RequestMapping("projet/secteur")
+public class SecteurRest {
+	@Autowired
+	private SecteurService secteurService;
+
+	/**
+	 * @param nom
+	 * @return
+	 * @see com.example.taxBoisson.service.SecteurService#findByNom(java.lang.String)
+	 */
+	@GetMapping("/nom/{nom}")
+	public Secteur findByNom(@PathVariable String nom) {
+		return secteurService.findByNom(nom);
+	}
+
+	/**
+	 * @param secteur
+	 * @see com.example.taxBoisson.service.SecteurService#save(com.example.taxBoisson.bean.Secteur)
+	 */
+	@PostMapping("/")
+	public void save(@RequestBody Secteur secteur) {
+		secteurService.save(secteur);
+	}
+	
+	
+
+}
