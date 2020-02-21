@@ -1,4 +1,4 @@
-package com.example.taxBoisson.service.impul;
+package com.example.taxBoisson.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

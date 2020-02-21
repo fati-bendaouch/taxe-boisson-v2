@@ -1,4 +1,4 @@
-package com.example.taxBoisson.service.impul;
+package com.example.taxBoisson.service.impl;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ public class RedevableImpl implements RedevableService {
 	public RedevableDao redevableDao;
 
 	@Override
-	public Redevable findByIdentientant(String identientant) {
+	public Redevable findByIdentifiant(String identifiant) {
 		// TODO Auto-generated method stub
-		return redevableDao.findByIdentientant(identientant);
+		return redevableDao.findByIdentientant(identifiant);
 	}
 
 	@Override
