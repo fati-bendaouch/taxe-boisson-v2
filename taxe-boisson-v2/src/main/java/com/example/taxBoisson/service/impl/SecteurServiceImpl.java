@@ -21,6 +21,7 @@ public class SecteurServiceImpl implements SecteurService {
 	@Override
 	public void save(Secteur secteur) {
 		// TODO Auto-generated method stub
+
 		sectuerdao.save(secteur);
 	}
 

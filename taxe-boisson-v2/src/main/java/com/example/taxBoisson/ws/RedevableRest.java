@@ -18,7 +18,7 @@ import com.example.taxBoisson.service.RedevableService;
 public class RedevableRest {
 @Autowired
 public RedevableService redevableService;
-@GetMapping("/identientant/{identientant}")
+@GetMapping("/identifiant/{identifiant}")
 public Redevable findByidentientant(@PathVariable String identifiant) {
 	return redevableService.findByIdentifiant(identifiant);
 }

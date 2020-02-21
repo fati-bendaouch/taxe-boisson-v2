@@ -22,8 +22,8 @@ public class RueRest {
 	 * @see com.example.taxBoisson.service.RueService#save(com.example.taxBoisson.bean.Rue)
 	 */
 	@PostMapping("/")
-	public void save(@RequestBody Rue rue) {
-		rueservie.save(rue);
+	public int save(@RequestBody Rue rue) {
+	return	rueservie.save(rue);
 	}
 
 	/**
