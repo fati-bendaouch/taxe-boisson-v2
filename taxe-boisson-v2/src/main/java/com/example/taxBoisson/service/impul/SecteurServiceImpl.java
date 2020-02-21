@@ -1,10 +1,11 @@
-package com.example.taxBoisson.service;
+package com.example.taxBoisson.service.impul;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Secteur;
 import com.example.taxBoisson.dao.SecteurDao;
+import com.example.taxBoisson.service.SecteurService;
 
 @Service
 public class SecteurServiceImpl implements SecteurService {
