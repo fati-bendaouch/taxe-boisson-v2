@@ -8,11 +8,5 @@ public interface RedevableService {
 	public Redevable findByIdentientant(String identientant); 
 	public List<Redevable> findAll(); 
 	public void save(Redevable redevable); 
-		
 	
-		
-	
-		
-	
-
 }

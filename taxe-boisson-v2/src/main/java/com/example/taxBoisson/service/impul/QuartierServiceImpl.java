@@ -1,4 +1,4 @@
-package com.example.taxBoisson.service;
+package com.example.taxBoisson.service.impul;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Quartier;
 import com.example.taxBoisson.dao.QuartierDao;
+import com.example.taxBoisson.service.QuartierService;
 
 @Service
 public class QuartierServiceImpl implements QuartierService{
