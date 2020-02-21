@@ -92,6 +92,9 @@ public class TauxTaxeBoisson implements Serializable {
 			return false;
 		return true;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	
 	

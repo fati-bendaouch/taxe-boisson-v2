@@ -19,8 +19,8 @@ public class RedevableRest {
 @Autowired
 public RedevableService redevableService;
 @GetMapping("/identientant/{identientant}")
-public Redevable findByidentientant(@PathVariable String identientant) {
-	return redevableService.findByIdentientant(identientant);
+public Redevable findByidentientant(@PathVariable String identifiant) {
+	return redevableService.findByIdentifiant(identifiant);
 }
 @PostMapping("/")
 public void save(@RequestBody Redevable redevable) {

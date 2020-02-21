@@ -61,6 +61,51 @@ public class Rue  implements Serializable {
 	public String toString() {
 		return "Rue [id=" + id + ", nom=" + nom + ", quartier=" + quartier + ", locales=" + locales + "]";
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((locales == null) ? 0 : locales.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((quartier == null) ? 0 : quartier.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rue other = (Rue) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (locales == null) {
+			if (other.locales != null)
+				return false;
+		} else if (!locales.equals(other.locales))
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (quartier == null) {
+			if (other.quartier != null)
+				return false;
+		} else if (!quartier.equals(other.quartier))
+			return false;
+		return true;
+	}
+	
 	
 	
 }
