@@ -17,7 +17,7 @@ public class RedevableImpl implements RedevableService {
 	@Override
 	public Redevable findByIdentifiant(String identifiant) {
 		// TODO Auto-generated method stub
-		return redevableDao.findByIdentientant(identifiant);
+		return redevableDao.findByIdentifiant(identifiant);
 	}
 
 	@Override
