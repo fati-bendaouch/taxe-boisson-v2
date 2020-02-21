@@ -12,10 +12,14 @@ public class RueServiceImpl implements RueService{
 	@Autowired
 private RueDao ruedao;
 	@Override
-	public void save(Rue rue) {
+	public int save(Rue rue) {
 		// TODO Auto-generated method stub
+		if(findByNom(rue.getNom())!=null)
+			return -1;
+		else {
 		ruedao.save(rue);
-	}
+		return 1;
+	}}
 
 	@Override
 	public Rue findByNom(String nom) {
