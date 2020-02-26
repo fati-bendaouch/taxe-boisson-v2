@@ -23,8 +23,8 @@ public class TypeRedevableRest {
 		return typeRedevableService.findByLibelle(libelle);
 	}
 	@PostMapping("/")
-	public void save( @RequestBody TypeRedevable typeRedevable) {
-		typeRedevableService.save(typeRedevable);
+	public int save( @RequestBody TypeRedevable typeRedevable) {
+		return typeRedevableService.save(typeRedevable);
 	}
 	@GetMapping("/")
 	public List<TypeRedevable> findAll(){

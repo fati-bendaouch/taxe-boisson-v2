@@ -27,8 +27,14 @@ public class RedevableImpl implements RedevableService {
 	}
 
 	@Override
-	public void save(Redevable redevable) {
-		redevableDao.save(redevable);
+	public int save(Redevable redevable) {
+		if(findByIdentifiant(redevable.getIdentifiant())!=null)
+			return -1;
+		else {
+			redevableDao.save(redevable);
+			return 1;
+			} 
+			
 		
 	}
 	
