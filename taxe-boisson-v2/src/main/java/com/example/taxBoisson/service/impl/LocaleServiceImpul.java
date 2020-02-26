@@ -21,9 +21,15 @@ public class LocaleServiceImpul implements LocaleService {
 	}
 
 	@Override
-	public void save(Locale locale) {
-		localedao.save(locale);
+	public int  save(Locale locale) {
+		Locale loca=localedao.findByReference(locale.getReference());
+		if(loca!=null) {
+			return -1;
+		}else {
 		
+		localedao.save(locale);
+		return 1;
+		}
 	}
 
 	@Override

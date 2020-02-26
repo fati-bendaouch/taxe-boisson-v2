@@ -18,9 +18,13 @@ public class CategorieImpul implements CategorieService{
 		return categorieDao.findByLibelle(libelle);
 	}
 	@Override
-	public void save (Categorie categorie) {
+	public int save (Categorie categorie) {
+		if(categorieDao.findByLibelle(categorie.getLibelle())!=null){
+			return -1;
+		}else {
 		 categorieDao.save(categorie);
-		
+		 return 1;
+		}
 	}
 	@Override
 	public List<Categorie> findAll(){

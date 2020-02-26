@@ -26,11 +26,17 @@ public class LocalRest {
 	}
 
 	@PostMapping("/")
-	public void save(@RequestBody Locale locale) {
-		localService.save(locale);
+	public int save(@RequestBody Locale locale) {
+		Locale loca=localService.findByReference(locale.getReference());
+		if(loca!=null) {
+			return -1;
+		}else {
 		
+			localService.save(locale);
+		return 1;
+		}
 	}
-
+	
 @GetMapping("/")
 	public List<Locale> findAll() {
 		
