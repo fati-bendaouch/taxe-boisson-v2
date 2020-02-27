@@ -14,7 +14,7 @@ import com.example.taxBoisson.bean.Categorie;
 import com.example.taxBoisson.service.CategorieService;
 
 @RestController
-@RequestMapping("projet/Categorie")
+@RequestMapping("TaxeBoisson/Categorie")
 public class CategorieRest {
 	@Autowired
 	private CategorieService  categorieService;
@@ -23,8 +23,13 @@ public class CategorieRest {
 		return categorieService.findByLibelle(libelle);
 	}
 @PostMapping("/")
-	public void save(@RequestBody Categorie categorie) {
+	public int  save(@RequestBody Categorie categorie) {
+	if(categorieService.findByLibelle(categorie.getLibelle())!=null){
+		return -1;
+	}else {
 		categorieService.save(categorie);
+	 return 1;
+	}
 	}
 @GetMapping("/")
 	public List<Categorie> findAll() {
