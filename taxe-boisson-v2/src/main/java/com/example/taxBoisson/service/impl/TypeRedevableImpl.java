@@ -20,8 +20,14 @@ public TypeRedevableDao typeRedevableDao;
 	}
 
 	@Override
-	public void save(TypeRedevable typeRedevable) {
-		typeRedevableDao.save(typeRedevable);
+	public int save(TypeRedevable typeRedevable) {
+		if(findByLibelle(typeRedevable.getLibelle())!=null)
+			return -1;
+		else {
+			typeRedevableDao.save(typeRedevable);
+			return 1;
+		}
+		
 		
 	}
 

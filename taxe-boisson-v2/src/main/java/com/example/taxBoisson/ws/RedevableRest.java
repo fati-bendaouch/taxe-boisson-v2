@@ -23,8 +23,8 @@ public Redevable findByidentientant(@PathVariable String identifiant) {
 	return redevableService.findByIdentifiant(identifiant);
 }
 @PostMapping("/")
-public void save(@RequestBody Redevable redevable) {
-	redevableService.save(redevable);
+public int save(@RequestBody Redevable redevable) {
+	return redevableService.save(redevable);
 }
 @GetMapping("/")
 public List<Redevable> findAll(){
