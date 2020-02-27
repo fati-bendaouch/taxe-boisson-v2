@@ -32,8 +32,8 @@ public class SecteurRest {
 	 * @see com.example.taxBoisson.service.SecteurService#save(com.example.taxBoisson.bean.Secteur)
 	 */
 	@PostMapping("/")
-	public void save(@RequestBody Secteur secteur) {
-		secteurService.save(secteur);
+	public int  save(@RequestBody Secteur secteur) {
+	return 	secteurService.save(secteur);
 	}
 	
 	

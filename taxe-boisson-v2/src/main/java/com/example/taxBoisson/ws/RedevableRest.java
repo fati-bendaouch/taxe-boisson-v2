@@ -15,7 +15,7 @@ import com.example.taxBoisson.service.RedevableService;
 
 @RestController
 @RequestMapping("projet/Redevable")
-public class RedevableRest {
+public class RedevableRest{
 @Autowired
 public RedevableService redevableService;
 @GetMapping("/identifiant/{identifiant}")

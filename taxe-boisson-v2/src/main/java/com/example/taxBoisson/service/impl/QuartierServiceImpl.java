@@ -21,10 +21,15 @@ public class QuartierServiceImpl implements QuartierService{
 	}
 
 	@Override
-	public void save(Quartier quartier) {
+	public int save(Quartier quartier) {
 		// TODO Auto-generated method stub
+		if(findByNom(quartier.getNom())!=null) {
+			return -1;
+		}
+		else {
 		quartierdao.save(quartier);
-	}
+		return 1;
+	}}
 
 	@Override
 	public List<Quartier> findAll() {

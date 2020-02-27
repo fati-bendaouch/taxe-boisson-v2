@@ -19,10 +19,14 @@ public class SecteurServiceImpl implements SecteurService {
 	}
 
 	@Override
-	public void save(Secteur secteur) {
+	public int  save(Secteur secteur) {
 		// TODO Auto-generated method stub
+if(findByNom(secteur.getNom())!=null) {return -1;
 
+}
+else 
 		sectuerdao.save(secteur);
+return 1;
 	}
 
 }
