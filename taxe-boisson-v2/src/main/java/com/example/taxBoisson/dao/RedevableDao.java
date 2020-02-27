@@ -6,5 +6,5 @@ import com.example.taxBoisson.bean.Redevable;
 @Repository
 public interface RedevableDao extends JpaRepository<Redevable, Long> {
 	
-public Redevable findByIdentifiant(String identientant );
+public Redevable findByIdentifiant(String identifiant );
 }

@@ -6,6 +6,6 @@ import com.example.taxBoisson.bean.TypeRedevable;
 
 public interface TypeRedevableService {
 public TypeRedevable findByLibelle(String libelle);
-public void save(TypeRedevable typeRedevable);
+public int save(TypeRedevable typeRedevable);
 public List<TypeRedevable> findAll();	
 }
