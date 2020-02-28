@@ -19,7 +19,7 @@ public class Secteur implements Serializable {
 	private Long id;
 	private String nom;
 	@OneToMany(mappedBy = "secteur")
-	//private List<Quartier> quartiers;
+	private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
 	}

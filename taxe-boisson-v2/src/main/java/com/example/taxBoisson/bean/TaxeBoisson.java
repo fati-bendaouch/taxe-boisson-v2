@@ -25,9 +25,7 @@ public class TaxeBoisson  implements Serializable {
 	private double montantTotale;
 	@ManyToOne
 	private Locale locale;
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 	@ManyToOne
 	private Redevable redevable;
 	private double profit;
