@@ -24,12 +24,9 @@ public class CategorieRest {
 	}
 @PostMapping("/")
 	public int  save(@RequestBody Categorie categorie) {
-	if(categorieService.findByLibelle(categorie.getLibelle())!=null){
-		return -1;
-	}else {
-		categorieService.save(categorie);
-	 return 1;
-	}
+	
+		return categorieService.save(categorie);
+	 
 	}
 @GetMapping("/")
 	public List<Categorie> findAll() {
