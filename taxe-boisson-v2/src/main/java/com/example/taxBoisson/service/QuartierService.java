@@ -6,6 +6,7 @@ import com.example.taxBoisson.bean.Quartier;
 
 public interface QuartierService {
 	public Quartier findByNom(String nom); 
-public void save(Quartier quartier);
+public int save(Quartier quartier);
 List<Quartier> findAll();
+List<Quartier> findBySecteurNom(String nom);
 }

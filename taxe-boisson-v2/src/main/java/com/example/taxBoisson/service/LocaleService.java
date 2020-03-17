@@ -8,6 +8,7 @@ public interface LocaleService {
 	public  Locale findByReference(String reference);
 	public int  save(Locale locale);
 	public List<Locale>findAll();
-	
+	public List<Locale> findByRedevabIdentifiant(String identifiant);
+
 
 }
