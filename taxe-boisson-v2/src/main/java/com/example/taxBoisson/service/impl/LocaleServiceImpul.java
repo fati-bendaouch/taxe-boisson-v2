@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.dao.LocalDao;
-import com.example.taxBoisson.service.LocaleService;
+import com.example.taxBoisson.service.facade.LocaleService;
 
 @Service
 public class LocaleServiceImpul implements LocaleService {

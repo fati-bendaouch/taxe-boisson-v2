@@ -1,13 +1,11 @@
 package com.example.taxBoisson.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.taxBoisson.bean.Categorie;
+import com.example.taxBoisson.bean.TauxTaxeBoisson;
 @Repository
-public interface CategorieDao extends JpaRepository<Categorie, Long>{
-public	List<Categorie> findByLibelle(String libelle);
-
+public interface TauxTaxeBoissonDao extends JpaRepository<TauxTaxeBoisson, Long>{
+	TauxTaxeBoisson findByCategorieId(Long categorieId);
 }

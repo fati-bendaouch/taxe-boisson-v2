@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Quartier;
-import com.example.taxBoisson.service.QuartierService;
+import com.example.taxBoisson.service.facade.QuartierService;
 
 @RestController
 @RequestMapping("projet/quartier")
@@ -21,7 +21,7 @@ public class QuartierRest {
 
 /**
  * @return
- * @see com.example.taxBoisson.service.QuartierService#findAll()
+ * @see com.example.taxBoisson.service.facade.QuartierService#findAll()
  */
 @GetMapping("/")
 public List<Quartier> findAll() {
@@ -31,7 +31,7 @@ public List<Quartier> findAll() {
 /**
  * @param nom
  * @return
- * @see com.example.taxBoisson.service.QuartierService#findByNom(java.lang.String)
+ * @see com.example.taxBoisson.service.facade.QuartierService#findByNom(java.lang.String)
  */
 @GetMapping("nom/{nom}")
 public Quartier findByNom(@PathVariable String nom) {
@@ -40,7 +40,7 @@ public Quartier findByNom(@PathVariable String nom) {
 
 /**
  * @param quartier
- * @see com.example.taxBoisson.service.QuartierService#save(com.example.taxBoisson.bean.Quartier)
+ * @see com.example.taxBoisson.service.facade.QuartierService#save(com.example.taxBoisson.bean.Quartier)
  */
 @PostMapping("/")
 public void save(@RequestBody Quartier quartier) {

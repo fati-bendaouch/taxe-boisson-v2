@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Categorie;
-import com.example.taxBoisson.service.CategorieService;
+import com.example.taxBoisson.service.facade.CategorieService;
 
 @RestController
 @RequestMapping("TaxeBoisson/Categorie")
@@ -19,7 +19,7 @@ public class CategorieRest {
 	@Autowired
 	private CategorieService  categorieService;
 @GetMapping("/libelle/{libelle}")
-	public Categorie findByLibelle(@PathVariable String libelle) {
+	public List<Categorie> findByLibelle(@PathVariable String libelle) {
 		return categorieService.findByLibelle(libelle);
 	}
 @PostMapping("/")

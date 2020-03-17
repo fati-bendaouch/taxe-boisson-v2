@@ -1,4 +1,4 @@
-package com.example.taxBoisson.service;
+package com.example.taxBoisson.service.facade;
 
 import java.util.List;
 

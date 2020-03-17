@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.dao.RedevableDao;
-import com.example.taxBoisson.service.RedevableService;
+import com.example.taxBoisson.service.facade.RedevableService;
 
 @Service
 public class RedevableImpl implements RedevableService {

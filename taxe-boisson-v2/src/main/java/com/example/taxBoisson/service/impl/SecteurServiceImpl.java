@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Secteur;
 import com.example.taxBoisson.dao.SecteurDao;
-import com.example.taxBoisson.service.SecteurService;
+import com.example.taxBoisson.service.facade.SecteurService;
 
 @Service
 public class SecteurServiceImpl implements SecteurService {
 @Autowired
-	private SecteurDao sectuerdao;
-	@Override
-	public Secteur findByNom(String nom) {
+private SecteurDao sectuerdao;
+@Override
+public Secteur findByNom(String nom) {
 		// TODO Auto-generated method stub
 		return	 sectuerdao.findByNom(nom);
 		 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Locale;
-import com.example.taxBoisson.service.LocaleService;
+import com.example.taxBoisson.service.facade.LocaleService;
 
 @RestController
 @RequestMapping("TaxeBoxe/Local")

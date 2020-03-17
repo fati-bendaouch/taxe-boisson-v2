@@ -1,13 +1,18 @@
 package com.example.taxBoisson.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class TauxTaxeBoisson implements Serializable {
@@ -22,7 +27,9 @@ public class TauxTaxeBoisson implements Serializable {
 	private Categorie categorie;
 	private double pourcentageBase;
 	private double pourcentageRetard;
-
+	@OneToMany(mappedBy = "tauxTaxeBoisson",cascade = CascadeType.ALL)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	 private List<TaxeBoisson> taxeBoissons;
 	
 	public Long getId() {
 		return id;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Rue;
-import com.example.taxBoisson.service.RueService;
+import com.example.taxBoisson.service.facade.RueService;
 
 @RestController
 @RequestMapping("projet/rue")
@@ -19,7 +19,7 @@ public class RueRest {
 
 	/**
 	 * @param rue
-	 * @see com.example.taxBoisson.service.RueService#save(com.example.taxBoisson.bean.Rue)
+	 * @see com.example.taxBoisson.service.facade.RueService#save(com.example.taxBoisson.bean.Rue)
 	 */
 	@PostMapping("/")
 	public int save(@RequestBody Rue rue) {
@@ -29,7 +29,7 @@ public class RueRest {
 	/**
 	 * @param nom
 	 * @return
-	 * @see com.example.taxBoisson.service.RueService#findByNom(java.lang.String)
+	 * @see com.example.taxBoisson.service.facade.RueService#findByNom(java.lang.String)
 	 */
 	@GetMapping("nom/{nom}")
 	public Rue findByNom (@PathVariable String nom) {

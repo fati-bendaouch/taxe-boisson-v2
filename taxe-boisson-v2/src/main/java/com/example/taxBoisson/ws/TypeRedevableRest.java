@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.TypeRedevable;
-import com.example.taxBoisson.service.TypeRedevableService;
+import com.example.taxBoisson.service.facade.TypeRedevableService;
 
 @RestController
 @RequestMapping("projet/TypeRedevable")

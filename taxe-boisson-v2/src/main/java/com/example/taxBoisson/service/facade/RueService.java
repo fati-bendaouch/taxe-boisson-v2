@@ -1,4 +1,4 @@
-package com.example.taxBoisson.service;
+package com.example.taxBoisson.service.facade;
 
 import com.example.taxBoisson.bean.Rue;
 public interface RueService {
