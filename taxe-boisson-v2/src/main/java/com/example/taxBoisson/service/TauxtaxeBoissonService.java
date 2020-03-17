@@ -11,5 +11,7 @@ public TauxTaxeBoisson findByCategorieLibelle(String libelle) ;
 public List<TauxTaxeBoisson>findAll();
 public int deleteByCategorieLibelle(String libelle);
 public TauxTaxeBoisson tauxlocal(String local);
+
+
 public int modify(String libelle, int tauxnormel,int tauxretard);
 }

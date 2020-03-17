@@ -30,6 +30,7 @@ private RueDao ruedao;
 		return 1;
 	}}
 
+	
 	@Override
 	public Rue findByNom(String nom) {
 		// TODO Auto-generated method stub

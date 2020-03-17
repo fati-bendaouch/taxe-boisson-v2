@@ -11,4 +11,5 @@ public interface TauxTaxeBoissonDao extends JpaRepository<TauxTaxeBoisson, Long>
 	public TauxTaxeBoisson findByCategorieLibelle(String libelle) ;
 	public int deleteByCategorieLibelle(String libelle);
 
+	
 }

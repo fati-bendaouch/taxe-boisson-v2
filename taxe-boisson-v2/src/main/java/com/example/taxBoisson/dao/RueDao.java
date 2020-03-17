@@ -9,4 +9,5 @@ import com.example.taxBoisson.bean.Rue;
 public interface RueDao extends JpaRepository<Rue, Long> {
 public  Rue findByNom(String nom);
 int deleteByNom(String nom);
+
 }

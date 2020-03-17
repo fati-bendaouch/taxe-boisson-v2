@@ -8,6 +8,7 @@ public interface SecteurService {
 	public Secteur findByNom(String nom);
 	public int save(Secteur secteur);
 	public List<Secteur>findAll();
+	
 	public int deleteByNom(String nom);
 
 }

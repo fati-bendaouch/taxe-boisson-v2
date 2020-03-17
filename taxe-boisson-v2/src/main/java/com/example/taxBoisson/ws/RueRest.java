@@ -30,6 +30,7 @@ public class RueRest {
 		return rueservie.find(rue, redevable);
 	}
 
+	
 	/**
 	 * @param nom
 	 * @return

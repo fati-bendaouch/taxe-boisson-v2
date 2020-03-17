@@ -8,5 +8,6 @@ public interface RueService {
 	public  Rue findByNom(String nom);
 	public List<Rue>findAll();
 	int deleteByNom(String nom);
+	
 	public int find(String rue, String redevable);
 }

@@ -33,6 +33,8 @@ public int modify(@PathVariable String libelle,@PathVariable int tauxnormel,@Pat
 	return tauxtaxeBoissonService.modify(libelle, tauxnormel, tauxretard);
 }
 
+
+
 /**
  * @param local
  * @return

@@ -73,7 +73,6 @@ taxe.setCategorie(c);
 		tauxTaxeBoissonDao.deleteByCategorieLibelle(libelle);
 		return 1;
 	}}
-
 @Override
 public TauxTaxeBoisson tauxlocal(String local) {
 	// TODO Auto-generated method stub
