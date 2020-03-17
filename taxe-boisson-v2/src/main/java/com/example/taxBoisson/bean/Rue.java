@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Rue  implements Serializable {
 	/**
@@ -22,6 +24,7 @@ public class Rue  implements Serializable {
 	@ManyToOne
 	private Quartier quartier;
 	@OneToMany(mappedBy = "rue")
+	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
 	private List<Locale> locales;
 	public Long getId() {
 		return id;
