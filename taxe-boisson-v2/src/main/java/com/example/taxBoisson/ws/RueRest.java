@@ -1,5 +1,8 @@
 package com.example.taxBoisson.ws;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +18,36 @@ import com.example.taxBoisson.service.RueService;
 public class RueRest {
 	@Autowired
 	private RueService rueservie;
+
+	/**
+	 * @param rue
+	 * @param redevable
+	 * @return
+	 * @see com.example.taxBoisson.service.RueService#find(java.lang.String, java.lang.String)
+	 */
+	@GetMapping("/rue/{rue}/redevable/{redevable}")
+	public int find(@PathVariable String rue,@PathVariable String redevable) {
+		return rueservie.find(rue, redevable);
+	}
+
+	/**
+	 * @param nom
+	 * @return
+	 * @see com.example.taxBoisson.service.RueService#deleteByNom(java.lang.String)
+	 */
+	@DeleteMapping("/nom/{nom}")
+	public int deleteByNom(@PathVariable String nom) {
+		return rueservie.deleteByNom(nom);
+	}
+
+	/**
+	 * @return
+	 * @see com.example.taxBoisson.service.RueService#findAll()
+	 */
+	@GetMapping("/")
+	public List<Rue> findAll() {
+		return rueservie.findAll();
+	}
 
 	/**
 	 * @param rue
