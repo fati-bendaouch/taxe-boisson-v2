@@ -1,3 +1,4 @@
+
 package com.example.taxBoisson.bean;
 
 import java.io.Serializable;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Secteur implements Serializable {
 	/**
@@ -19,7 +22,8 @@ public class Secteur implements Serializable {
 	private Long id;
 	private String nom;
 	@OneToMany(mappedBy = "secteur")
-	private List<Quartier> quartiers;
+	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+    private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
 	}
