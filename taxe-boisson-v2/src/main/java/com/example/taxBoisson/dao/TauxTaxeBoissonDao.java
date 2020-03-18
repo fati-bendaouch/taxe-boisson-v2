@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.example.taxBoisson.bean.Categorie;
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
+import com.example.taxBoisson.bean.TaxeBoisson;
 @Repository
 public interface TauxTaxeBoissonDao extends JpaRepository<TauxTaxeBoisson, Long>{
-	TauxTaxeBoisson findByCategorieId(Long categorieId);
+	public TauxTaxeBoisson findByCategorieLibelle(String libelle) ;
+	public int deleteByCategorieLibelle(String libelle);
+	public TauxTaxeBoisson findByCategorieId(Long id);
+
+
 }

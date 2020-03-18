@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.persistence.OneToMany;
 @Entity
 public class Quartier  implements Serializable {
 	/**
@@ -24,8 +24,7 @@ public class Quartier  implements Serializable {
 	private long id;
 	private String nom;
 	@OneToMany(mappedBy = "quartier")
-	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-  private List<Rue> rues;
+	private List<Rue> rues;
 	@ManyToOne
 	private Secteur secteur;
 	

@@ -23,7 +23,7 @@ public class TauxTaxeBoisson implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne
+	@ManyToOne 
 	private Categorie categorie;
 	private double pourcentageBase;
 	private double pourcentageRetard;

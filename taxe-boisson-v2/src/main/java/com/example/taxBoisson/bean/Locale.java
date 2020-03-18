@@ -25,19 +25,22 @@ public class Locale implements Serializable {
 	private Rue rue;
 	private int dernierTrimPaye;
 	private int dernierAnneePaye;
+
 	@ManyToOne
 	private Categorie categorie;
 
-	
-	
-	public Categorie getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
-
+	/**
+ * @return the categorie
+ */
+public Categorie getCategorie() {
+	return categorie;
+}
+/**
+ * @param categorie the categorie to set
+ */
+public void setCategorie(Categorie categorie) {
+	this.categorie = categorie;
+}
 	public int getDernierTrimPaye() {
 		return dernierTrimPaye;
 	}

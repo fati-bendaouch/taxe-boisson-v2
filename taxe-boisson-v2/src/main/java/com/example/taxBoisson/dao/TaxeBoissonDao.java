@@ -9,5 +9,6 @@ import com.example.taxBoisson.bean.TaxeBoisson;
 
 public interface  TaxeBoissonDao extends JpaRepository<TaxeBoisson, Long> {
 	
+	
 
 }

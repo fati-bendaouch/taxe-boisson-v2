@@ -1,6 +1,9 @@
 package com.example.taxBoisson.ws;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,26 @@ import com.example.taxBoisson.service.facade.SecteurService;
 public class SecteurRest {
 	@Autowired
 	private SecteurService secteurService;
+	
+
+	/**
+	 * @param nom
+	 * @return
+	 * @see com.example.taxBoisson.service.SecteurService#deleteByNom(java.lang.String)
+	 */
+	@DeleteMapping("/nom/{nom}")
+	public int deleteByNom(@PathVariable String nom) {
+		return secteurService.deleteByNom(nom);
+	}
+
+	/**
+	 * @return
+	 * @see com.example.taxBoisson.service.SecteurService#findAll()
+	 */
+	@GetMapping("/")
+	public List<Secteur> findAll() {
+		return secteurService.findAll();
+	}
 
 	/**
 	 * @param nom
@@ -32,10 +55,7 @@ public class SecteurRest {
 	 * @see com.example.taxBoisson.service.facade.SecteurService#save(com.example.taxBoisson.bean.Secteur)
 	 */
 	@PostMapping("/")
-	public void save(@RequestBody Secteur secteur) {
-		secteurService.save(secteur);
+	public int  save(@RequestBody Secteur secteur) {
+	return 	secteurService.save(secteur);
 	}
-	
-	
-
 }

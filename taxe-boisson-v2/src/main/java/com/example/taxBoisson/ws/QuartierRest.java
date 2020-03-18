@@ -43,12 +43,8 @@ public Quartier findByNom(@PathVariable String nom) {
  * @see com.example.taxBoisson.service.facade.QuartierService#save(com.example.taxBoisson.bean.Quartier)
  */
 @PostMapping("/")
-public int save(Quartier quartier) {
-	return quartierService.save(quartier);
-}
-@GetMapping("/nom1/{nom}")
-public List<Quartier> findBySecteurNom( @PathVariable String nom) {
-	return quartierService.findBySecteurNom(nom);
+public int save(@RequestBody Quartier quartier) {
+return 	quartierService.save(quartier);
 }
 
 

@@ -30,6 +30,5 @@ public class TypeRedevableRest {
 	public List<TypeRedevable> findAll(){
 		return typeRedevableService.findAll();
 		}
-	
 
 }
