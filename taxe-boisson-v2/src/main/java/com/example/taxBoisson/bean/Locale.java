@@ -30,7 +30,7 @@ public class Locale implements Serializable {
 	private Categorie categorie;
 
 	/**
- * @return the categorie
+ 
  */
 public Categorie getCategorie() {
 	return categorie;
