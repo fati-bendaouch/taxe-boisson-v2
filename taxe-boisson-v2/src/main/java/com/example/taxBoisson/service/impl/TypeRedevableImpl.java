@@ -5,14 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.bean.TypeRedevable;
 import com.example.taxBoisson.dao.TypeRedevableDao;
+import com.example.taxBoisson.service.RedevableService;
 import com.example.taxBoisson.service.TypeRedevableService;
 
 @Service 
 public class TypeRedevableImpl implements TypeRedevableService{
 @Autowired
 public TypeRedevableDao typeRedevableDao;
+@Autowired
+RedevableService redevableService;
 	@Override
 	public TypeRedevable findByLibelle(String libelle) {
 		// TODO Auto-generated method stub
@@ -37,4 +41,5 @@ public TypeRedevableDao typeRedevableDao;
 		return typeRedevableDao.findAll();
 	}
 
+	
 }

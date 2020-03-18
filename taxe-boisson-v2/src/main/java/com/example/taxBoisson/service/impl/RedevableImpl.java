@@ -18,12 +18,15 @@ import com.example.taxBoisson.service.TypeRedevableService;
 @Service
 public class RedevableImpl implements RedevableService {
 	@Autowired
+
 	private RedevableDao redevableDao;
 	@Autowired
 	private TypeRedevableService typeRedevableService;
 	@Autowired
 	private QuartierService quartierService;
 
+	
+	
 	@Override
 	public Redevable findByIdentifiant(String identifiant) {
 		// TODO Auto-generated method stub
@@ -48,7 +51,7 @@ public class RedevableImpl implements RedevableService {
 		
 	}
 
-	
+
 	@Override
 	public List<Redevable> findByTypeRedevable(String libelle) {
 		List<Redevable> redevables=	redevableDao.findAll();	

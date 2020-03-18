@@ -32,9 +32,14 @@ public class QuartierServiceImpl implements QuartierService{
 			return -1;
 		}
 		else {
+
+		if(findByNom(quartier.getNom())!=null)
+			return -1;
+		else
 		quartierdao.save(quartier);
 		return 1;
 	}}
+	
 
 	@Override
 	public List<Quartier> findAll() {
@@ -51,7 +56,7 @@ public class QuartierServiceImpl implements QuartierService{
 				quartiers2.add(quartier);
 		}
 		return quartiers2;
-	
-	}
+
+}
 
 }

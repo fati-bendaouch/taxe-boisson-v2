@@ -1,3 +1,4 @@
+
 package com.example.taxBoisson.bean;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class Secteur implements Serializable {
 	private String nom;
 	@OneToMany(mappedBy = "secteur")
 	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+
    private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
