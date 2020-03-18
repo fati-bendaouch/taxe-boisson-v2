@@ -37,7 +37,10 @@ public class LocalRest {
 		
 		return localService.findAll();
 	}
-
+@GetMapping("/identifiant/{identifiant}")
+public List<Locale> findByRedevabIdentifiant( @PathVariable String identifiant) {
+	return localService.findByRedevabIdentifiant(identifiant);
+}
 	
 	
 	

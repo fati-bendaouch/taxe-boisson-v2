@@ -44,7 +44,11 @@ public Quartier findByNom(@PathVariable String nom) {
  */
 @PostMapping("/")
 public int save(@RequestBody Quartier quartier) {
-return 	quartierService.save(quartier);
+return 	quartierService.save(quartier);}
+
+@GetMapping("/nom1/{nom}")
+public List<Quartier> findBySecteurNom( @PathVariable String nom) {
+	return quartierService.findBySecteurNom(nom);
 }
 
 

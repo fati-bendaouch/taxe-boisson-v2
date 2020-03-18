@@ -1,19 +1,29 @@
 package com.example.taxBoisson.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.taxBoisson.bean.Locale;
+import com.example.taxBoisson.bean.Quartier;
 import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.dao.RedevableDao;
 import com.example.taxBoisson.service.facade.QuartierService;
 import com.example.taxBoisson.service.facade.RedevableService;
 import com.example.taxBoisson.service.facade.TypeRedevableService;
+import com.example.taxBoisson.bean.Rue;
+import com.example.taxBoisson.dao.RedevableDao;
+
 @Service
 public class RedevableImpl implements RedevableService {
 	@Autowired
 	public RedevableDao redevableDao;
+	@Autowired
+	public TypeRedevableService typeRedevableService;
+	@Autowired
+	QuartierService quartierService;
 
 	@Override
 	public Redevable findByIdentifiant(String identifiant) {
@@ -37,6 +47,32 @@ public class RedevableImpl implements RedevableService {
 			} 
 			
 		
+	}
+
+	@Override
+	public List<Redevable> findByTypeRedevable(String libelle) {
+		List<Redevable> redevables=	redevableDao.findAll();	
+		List<Redevable> redevables1=new ArrayList<Redevable>();
+		for(Redevable re:redevables) {
+			if(typeRedevableService.findByLibelle(libelle)==re.getTypeRedevable()) {
+				redevables1.add(re);
+			}
+		}
+		return redevables1;
+
+	}
+
+	@Override
+	public List<Redevable> findByQuartier(String nom) {
+      Quartier quartier=quartierService.findByNom(nom);
+      List<Redevable> redevables=new ArrayList<Redevable>();
+      for(Rue r:quartier.getRues()) {
+    	  for(Locale l:r.getLocales()) {
+    		 redevables.add(l.getRedevable()) ;
+    	  }
+      }
+      
+		return redevables;
 	}
 	
 

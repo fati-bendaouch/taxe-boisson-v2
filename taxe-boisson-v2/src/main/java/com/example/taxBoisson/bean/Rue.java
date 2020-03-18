@@ -24,7 +24,9 @@ public class Rue  implements Serializable {
 	@ManyToOne
 	private Quartier quartier;
 	@OneToMany(mappedBy = "rue")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
+   
+	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
 	private List<Locale> locales;
 	public Long getId() {
 		return id;

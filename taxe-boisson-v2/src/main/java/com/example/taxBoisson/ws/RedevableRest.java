@@ -30,7 +30,14 @@ public int save(@RequestBody Redevable redevable) {
 public List<Redevable> findAll(){
 	return redevableService.findAll();
 }
-
+@GetMapping("/libelle/{libelle}")
+public List<Redevable> findByTypeRedevable(@ PathVariable String libelle) {
+	return redevableService.findByTypeRedevable(libelle);
+}
+@GetMapping("/nom/{nom}")
+public List<Redevable> findByQuartier(@PathVariable String nom) {
+	return redevableService.findByQuartier(nom);
+}
 
 
 }

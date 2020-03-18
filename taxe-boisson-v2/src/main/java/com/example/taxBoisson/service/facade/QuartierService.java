@@ -8,4 +8,5 @@ public interface QuartierService {
 public Quartier findByNom(String nom);
 List<Quartier> findAll();
 public int save(Quartier quartier);
+public List<Quartier> findBySecteurNom(String nom);
 }
