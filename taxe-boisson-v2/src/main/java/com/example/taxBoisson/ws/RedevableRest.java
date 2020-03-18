@@ -3,6 +3,7 @@ package com.example.taxBoisson.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,14 @@ public int save(@RequestBody Redevable redevable) {
 @GetMapping("/")
 public List<Redevable> findAll(){
 	return redevableService.findAll();
+}
+@GetMapping("/libelle/{libelle}")
+public List<Redevable> findByTypeRedevable(@ PathVariable String libelle) {
+	return redevableService.findByTypeRedevable(libelle);
+}
+@GetMapping("/nom/{nom}")
+public List<Redevable> findByQuartier(@PathVariable String nom) {
+	return redevableService.findByQuartier(nom);
 }
 
 

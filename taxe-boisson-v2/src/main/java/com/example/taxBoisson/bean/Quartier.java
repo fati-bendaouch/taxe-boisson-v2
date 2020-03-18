@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class Quartier  implements Serializable {
 	/**
@@ -20,6 +22,7 @@ public class Quartier  implements Serializable {
 	private long id;
 	private String nom;
 	@OneToMany(mappedBy = "quartier")
+	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
 	private List<Rue> rues;
 	@ManyToOne
 	private Secteur secteur;
