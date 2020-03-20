@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Secteur;
-import com.example.taxBoisson.service.SecteurService;
+import com.example.taxBoisson.service.facade.SecteurService;
 
 @RestController
 @RequestMapping("projet/secteur")
@@ -43,7 +43,7 @@ public class SecteurRest {
 	/**
 	 * @param nom
 	 * @return
-	 * @see com.example.taxBoisson.service.SecteurService#findByNom(java.lang.String)
+	 * @see com.example.taxBoisson.service.facade.SecteurService#findByNom(java.lang.String)
 	 */
 	@GetMapping("/nom/{nom}")
 	public Secteur findByNom(@PathVariable String nom) {
@@ -52,7 +52,7 @@ public class SecteurRest {
 
 	/**
 	 * @param secteur
-	 * @see com.example.taxBoisson.service.SecteurService#save(com.example.taxBoisson.bean.Secteur)
+	 * @see com.example.taxBoisson.service.facade.SecteurService#save(com.example.taxBoisson.bean.Secteur)
 	 */
 	@PostMapping("/")
 	public int  save(@RequestBody Secteur secteur) {

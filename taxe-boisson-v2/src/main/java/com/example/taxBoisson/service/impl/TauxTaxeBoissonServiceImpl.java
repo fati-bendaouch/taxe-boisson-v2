@@ -1,5 +1,5 @@
-package com.example.taxBoisson.service.impl;
 
+package com.example.taxBoisson.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,36 +10,34 @@ import com.example.taxBoisson.bean.Categorie;
 import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
 import com.example.taxBoisson.dao.TauxTaxeBoissonDao;
-import com.example.taxBoisson.service.CategorieService;
-import com.example.taxBoisson.service.LocaleService;
-import com.example.taxBoisson.service.TauxtaxeBoissonService;
+import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
 
 @Service
-public class TauxTaxeBoissonServiceImpl implements TauxtaxeBoissonService {
+public class TauxTaxeBoissonServiceImpl implements TauxTaxeBoissonService {
 	@Autowired
 	private TauxTaxeBoissonDao tauxTaxeBoissonDao;
 	@Autowired
-	private CategorieService categorieService;
+	private com.example.taxBoisson.service.facade.CategorieService categorieService;
 	@Autowired
-	private LocaleService localeservice;
+	private com.example.taxBoisson.service.facade.LocaleService localeservice;
 
 	/**
 	 * @return the categorieService
 	 */
-	public CategorieService getCategorieService() {
+	public com.example.taxBoisson.service.facade.CategorieService getCategorieService() {
 		return categorieService;
 	}
 
 	/**
 	 * @param categorieService the categorieService to set
 	 */
-	public void setCategorieService(CategorieService categorieService) {
+	public void setCategorieService(com.example.taxBoisson.service.facade.CategorieService categorieService) {
 		this.categorieService = categorieService;
 	}
 
 	@Override
 	public int save(TauxTaxeBoisson taxe) {
-		 Categorie c=categorieService.findByLibelle(taxe.getCategorie().getLibelle());
+		 Categorie c=(Categorie) categorieService.findByLibelle(taxe.getCategorie().getLibelle());
 		if (c==null)
 			return -1;
 
@@ -82,8 +80,8 @@ return c;
 }
 @Override
 public int modify(String libelle, int tauxnormel, int tauxretard) {
-	String c=categorieService.findByLibelle(libelle).getLibelle();
-	Categorie categorie=categorieService.findByLibelle(libelle);
+	String c=((Categorie) categorieService.findByLibelle(libelle)).getLibelle();
+	Categorie categorie=(Categorie) categorieService.findByLibelle(libelle);
 	TauxTaxeBoisson taux= findByCategorieLibelle(c);
 	if (taux==null)
 	return -1;

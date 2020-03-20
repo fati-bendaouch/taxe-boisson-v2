@@ -10,4 +10,5 @@ import com.example.taxBoisson.bean.Locale;
 @Repository
 public interface  LocalDao extends JpaRepository<Locale ,Long> {
 	public  Locale findByReference(String reference);
+	public int deleteByReference(String reference);
 }

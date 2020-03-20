@@ -3,14 +3,18 @@ package com.example.taxBoisson.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.taxBoisson.bean.Quartier;
 import com.example.taxBoisson.bean.Secteur;
 import com.example.taxBoisson.dao.QuartierDao;
-import com.example.taxBoisson.service.QuartierService;
-import com.example.taxBoisson.service.SecteurService;
+import com.example.taxBoisson.service.facade.QuartierService;
+import com.example.taxBoisson.service.facade.SecteurService;
+import com.example.taxBoisson.bean.Quartier;
+import com.example.taxBoisson.bean.Secteur;
+import com.example.taxBoisson.dao.QuartierDao;
 
 @Service
 public class QuartierServiceImpl implements QuartierService{
@@ -43,9 +47,11 @@ public class QuartierServiceImpl implements QuartierService{
 
 	@Override
 	public List<Quartier> findAll() {
-		// TODO Auto-generated method stub
 		return quartierdao.findAll();
+
 	}
+
+	
 	@Override
 	public List<Quartier> findBySecteurNom(String nom) {
 		Secteur secteur=secteurService.findByNom(nom);
@@ -59,4 +65,18 @@ public class QuartierServiceImpl implements QuartierService{
 
 }
 
-}
+	@Override
+	@Transactional
+	public int deleteByNom(String nom) {
+		if(findByNom(nom)==null)
+			return -1;
+		else {
+			quartierdao.deleteByNom(nom);
+			return 1;
+		}
+	}
+	
+	}
+	
+
+

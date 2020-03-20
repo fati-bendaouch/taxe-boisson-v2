@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
-import com.example.taxBoisson.service.TauxtaxeBoissonService;
+import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
+import com.example.taxBoisson.service.impl.TauxTaxeBoissonServiceImpl;
 
 @RestController
 @RequestMapping("projet/tauxTaxeBoissonRest")
 public class TauxTaxeBoissonRest {
 @Autowired
-	private TauxtaxeBoissonService tauxtaxeBoissonService;
+	private TauxTaxeBoissonService tauxtaxeBoissonService;
 
 /**
  * @param libelle

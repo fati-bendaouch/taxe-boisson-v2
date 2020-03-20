@@ -3,17 +3,20 @@ package com.example.taxBoisson.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.Quartier;
 import com.example.taxBoisson.bean.Redevable;
+import com.example.taxBoisson.dao.RedevableDao;
+import com.example.taxBoisson.service.facade.QuartierService;
+import com.example.taxBoisson.service.facade.RedevableService;
+import com.example.taxBoisson.service.facade.TypeRedevableService;
 import com.example.taxBoisson.bean.Rue;
 import com.example.taxBoisson.dao.RedevableDao;
-import com.example.taxBoisson.service.QuartierService;
-import com.example.taxBoisson.service.RedevableService;
-import com.example.taxBoisson.service.TypeRedevableService;
 
 @Service
 public class RedevableImpl implements RedevableService {
@@ -76,6 +79,17 @@ public class RedevableImpl implements RedevableService {
       }
       
 		return redevables;
+	}
+	@Override
+	@Transactional
+	public int deleteByIdentifiant(String identifiant) {
+	if(findByIdentifiant(identifiant)==null)
+		return -1;
+	else {
+		redevableDao.deleteByIdentifiant(identifiant);
+		return 1;
+	}
+		
 	}
 	
 

@@ -10,6 +10,7 @@ import com.example.taxBoisson.bean.TaxeBoisson;
 public interface TauxTaxeBoissonDao extends JpaRepository<TauxTaxeBoisson, Long>{
 	public TauxTaxeBoisson findByCategorieLibelle(String libelle) ;
 	public int deleteByCategorieLibelle(String libelle);
+	public TauxTaxeBoisson findByCategorieId(Long id);
 
-	
+
 }

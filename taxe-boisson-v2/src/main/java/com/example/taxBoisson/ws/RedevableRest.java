@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Redevable;
-import com.example.taxBoisson.service.RedevableService;
+import com.example.taxBoisson.service.facade.RedevableService;
 
 @RestController
 @RequestMapping("projet/Redevable")
@@ -39,7 +39,10 @@ public List<Redevable> findByTypeRedevable(@ PathVariable String libelle) {
 public List<Redevable> findByQuartier(@PathVariable String nom) {
 	return redevableService.findByQuartier(nom);
 }
-
+@DeleteMapping("/identifiant1/{identifiant}")
+public int deleteByIdentifiant(@PathVariable String identifiant) {
+	return redevableService.deleteByIdentifiant(identifiant);
+} 
 
 
 }

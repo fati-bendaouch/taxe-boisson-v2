@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Rue;
-import com.example.taxBoisson.service.RueService;
+import com.example.taxBoisson.service.facade.RueService;
 
 @RestController
 @RequestMapping("projet/rue")
@@ -21,6 +21,9 @@ public class RueRest {
 
 	/**
 	 * @param rue
+<<<<<<< HEAD
+	 * @see com.example.taxBoisson.service.facade.RueService#save(com.example.taxBoisson.bean.Rue)
+=======
 	 * @param redevable
 	 * @return
 	 * @see com.example.taxBoisson.service.RueService#find(java.lang.String, java.lang.String)
@@ -53,6 +56,7 @@ public class RueRest {
 	/**
 	 * @param rue
 	 * @see com.example.taxBoisson.service.RueService#save(com.example.taxBoisson.bean.Rue)
+>>>>>>> branch 'master' of https://github.com/fati-bendaouch/taxe-boisson-v2.git
 	 */
 	@PostMapping("/")
 	public int save(@RequestBody Rue rue) {
@@ -62,7 +66,7 @@ public class RueRest {
 	/**
 	 * @param nom
 	 * @return
-	 * @see com.example.taxBoisson.service.RueService#findByNom(java.lang.String)
+	 * @see com.example.taxBoisson.service.facade.RueService#findByNom(java.lang.String)
 	 */
 	@GetMapping("nom/{nom}")
 	public Rue findByNom (@PathVariable String nom) {

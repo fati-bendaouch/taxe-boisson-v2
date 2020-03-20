@@ -1,12 +1,16 @@
 package com.example.taxBoisson.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 public class TaxeBoisson  implements Serializable {
@@ -21,17 +25,23 @@ public class TaxeBoisson  implements Serializable {
 	private int trim;
 	private double montantBase;
 	private double montantRetard;
-	private int moisRetard;
+	private double  moisRetard;
 	private double montantTotale;
 	@ManyToOne
-	private Locale locale;
-	
+	private Locale locale; 
 	@ManyToOne
 	private Redevable redevable;
 	private double profit;
 	@ManyToOne
 	private TauxTaxeBoisson tauxTaxeBoisson;
-	
+	@JsonFormat(shape = Shape.STRING, pattern = "dd-MM-Y YYY")
+	private Date datePresentation;
+	public Date getDatePresentation() {
+		return datePresentation;
+	}
+	public void setDatePresentation(Date datePresentation) {
+		this.datePresentation = datePresentation;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -62,10 +72,10 @@ public class TaxeBoisson  implements Serializable {
 	public void setMontantRetard(double montantRetard) {
 		this.montantRetard = montantRetard;
 	}
-	public int getMoisRetard() {
+	public double getMoisRetard() {
 		return moisRetard;
 	}
-	public void setMoisRetard(int moisRetard) {
+	public void setMoisRetard(double moisRetard) {
 		this.moisRetard = moisRetard;
 	}
 	public double getMontantTotale() {
@@ -132,7 +142,7 @@ public class TaxeBoisson  implements Serializable {
 		result = prime * result + annee;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((locale == null) ? 0 : locale.hashCode());
-		result = prime * result + moisRetard;
+		result = (int) (prime * result + moisRetard);
 		long temp;
 		temp = Double.doubleToLongBits(montantBase);
 		result = prime * result + (int) (temp ^ (temp >>> 32));

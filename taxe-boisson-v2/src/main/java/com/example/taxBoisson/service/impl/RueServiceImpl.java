@@ -11,8 +11,9 @@ import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.bean.Rue;
 import com.example.taxBoisson.dao.RueDao;
-import com.example.taxBoisson.service.RedevableService;
-import com.example.taxBoisson.service.RueService;
+import com.example.taxBoisson.service.facade.RedevableService;
+import com.example.taxBoisson.service.facade.RueService;
+
 
 @Service
 public class RueServiceImpl implements RueService{
