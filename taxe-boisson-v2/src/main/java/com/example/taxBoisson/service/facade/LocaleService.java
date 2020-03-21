@@ -9,4 +9,8 @@ public interface LocaleService {
 	public int  save(Locale locale);
 	public List<Locale> findAll();
 	public List<Locale> findByRedevabIdentifiant(String identifiant);
+	public List<Locale> findByRueNomAndCategorieLibelle(String nom,String libelle);
+	public List<Locale> findByRueQuartierNomAndCategorieLibelle(String nom,String libelle);
+	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(String nom,String libelle);
+	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
 }

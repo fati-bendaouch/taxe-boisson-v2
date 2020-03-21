@@ -24,8 +24,6 @@ public class Redevable  implements Serializable {
 	@ManyToOne
 	private TypeRedevable typeRedevable;
 	
-	
-	
 	public String getIdentifiant() {
 		return identifiant;
 	}

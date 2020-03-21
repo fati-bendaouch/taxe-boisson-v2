@@ -57,6 +57,29 @@ public class LocaleServiceImpul implements LocaleService {
 		}
 		return locales2;
 	}
+
+	@Override
+	public List<Locale> findByRueNomAndCategorieLibelle(String nom, String libelle) {
+		return localedao.findByRueNomAndCategorieLibelle(nom, libelle);
+	}
+
+	@Override
+	public List<Locale> findByRueQuartierNomAndCategorieLibelle(String nom, String libelle) {
+		return localedao.findByRueQuartierNomAndCategorieLibelle(nom, libelle);
+	}
+
+	@Override
+	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(String nom, String libelle) {
+		return localedao.findByRueQuartierSecteurNomAndCategorieLibelle(nom, libelle);
+	}
+
+	@Override
+	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(int trimMin, int trimMax, int anneeMin,
+			int anneeMax) {
+		return localedao.findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(trimMin, trimMax, anneeMin, anneeMax);
+	}
+
+	
 }
 	
 
