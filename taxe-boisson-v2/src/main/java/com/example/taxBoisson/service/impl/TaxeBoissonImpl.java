@@ -22,13 +22,13 @@ import com.example.taxBoisson.service.util.DateUtil;
 public class TaxeBoissonImpl implements TaxeBoissonService {
 	@Autowired
 	private TaxeBoissonDao taxeBoissonDao;
-	
+
 	@Autowired
 	private LocalDao localedao;
-	
+
 	@Autowired
 	private RedevableDao redevableDao;
-	
+
 	@Autowired
 	private TauxTaxeBoissonDao tauxTaxeBoissonDao;
 
@@ -41,24 +41,23 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	@Autowired
 	private CategorieService categorieService;
 
-	public  int saveOrSimuler(TaxeBoisson taxeBoisson,boolean simuler) {
+	public int saveOrSimuler(TaxeBoisson taxeBoisson, boolean simuler) {
 		Locale locale = localedao.getOne(taxeBoisson.getLocale().getId());
 		Redevable redevable = redevableDao.getOne(taxeBoisson.getRedevable().getId());
 
-
 		if (locale == null) {
 			return -1;
-		}else if (redevable == null) {
+		} else if (redevable == null) {
 			return -3;
-		} 
-		
-		TauxTaxeBoisson tauxTaxeBoisson = tauxTaxeBoissonDao.findByCategorieId(locale.getCategorie().getId());
-		System.out.println("getCategorie +==="+locale.getCategorie().getId()); 
-		if(tauxTaxeBoisson ==null) {
-			return -2;
 		}
-		else {
-			taxeBoisson.setMoisRetard(DateUtil.calcDiffMois(taxeBoisson.getTrim(), taxeBoisson.getAnnee(), taxeBoisson.getDatePresentation()));
+
+		TauxTaxeBoisson tauxTaxeBoisson = tauxTaxeBoissonDao.findByCategorieId(locale.getCategorie().getId());
+		System.out.println("getCategorie +===" + locale.getCategorie().getId());
+		if (tauxTaxeBoisson == null) {
+			return -2;
+		} else {
+			taxeBoisson.setMoisRetard(DateUtil.calcDiffMois(taxeBoisson.getTrim(), taxeBoisson.getAnnee(),
+					taxeBoisson.getDatePresentation()));
 			taxeBoisson.setTrim(taxeBoisson.getTrim());
 			taxeBoisson.setAnnee(taxeBoisson.getAnnee());
 			taxeBoisson.setProfit(taxeBoisson.getProfit());
@@ -66,22 +65,28 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 			taxeBoisson.setRedevable(redevable);
 			taxeBoisson.setTauxTaxeBoisson(tauxTaxeBoisson);
 			taxeBoisson.setMontantBase(taxeBoisson.getTauxTaxeBoisson().getPourcentageBase() * taxeBoisson.getProfit());
-			taxeBoisson.setMontantRetard(taxeBoisson.getTauxTaxeBoisson().getPourcentageRetard() * taxeBoisson.getProfit());
-			taxeBoisson.setMontantTotale(taxeBoisson.getMontantBase()+taxeBoisson.getMontantRetard());
-			if(!simuler)
-			taxeBoissonDao.save(taxeBoisson);
-			return 1;
+			taxeBoisson.setMontantRetard(
+					taxeBoisson.getTauxTaxeBoisson().getPourcentageRetard() * taxeBoisson.getProfit());
+			taxeBoisson.setMontantTotale(taxeBoisson.getMontantBase() + taxeBoisson.getMontantRetard());
+			if (simuler == false) {
+				taxeBoissonDao.save(taxeBoisson);
+				return 1;
+			} else {
+				return 2;
+			}
 		}
 	}
 
 	public int save(TaxeBoisson taxeBoisson) {
-		return saveOrSimuler(taxeBoisson, false);
-	}
-	@Override
-	public int simulation(TaxeBoisson taxeBoisson) {
-		return saveOrSimuler(taxeBoisson, true);
+		int res = saveOrSimuler(taxeBoisson, false);
+		return res;
+
 	}
 
-	
+	@Override
+	public TaxeBoisson simulation(TaxeBoisson taxeBoisson) {
+		saveOrSimuler(taxeBoisson, true);
+		return taxeBoisson;
+	}
 
 }

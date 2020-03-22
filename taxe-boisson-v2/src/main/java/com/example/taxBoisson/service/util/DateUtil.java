@@ -8,7 +8,7 @@ public class DateUtil {
 	public static Date constructDate(int trim,int annee) {
 		Date date = new Date();
 		date.setDate(1);
-		date.setYear(annee-2004);
+		date.setYear(annee-1900);
 		if(trim==1) {
 			date.setMonth(3);
 		}else if(trim==2) {
