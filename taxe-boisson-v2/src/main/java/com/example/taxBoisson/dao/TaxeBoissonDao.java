@@ -12,6 +12,6 @@ import com.example.taxBoisson.bean.TaxeBoisson;
 
 public interface  TaxeBoissonDao extends JpaRepository<TaxeBoisson, Long> {
 	
-	public List<Locale> findByTrimBetweenAndAnneeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
+	public List<TaxeBoisson> findByTrimBetweenAndAnneeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
 
 }

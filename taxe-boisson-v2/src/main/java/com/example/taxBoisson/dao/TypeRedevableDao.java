@@ -8,5 +8,5 @@ import com.example.taxBoisson.bean.TypeRedevable;
 @Repository
 public interface TypeRedevableDao extends JpaRepository<TypeRedevable, Long>{
 	public TypeRedevable findByLibelle(String libelle);
-
+   public int deleteByLibelle(String libelle);
 }

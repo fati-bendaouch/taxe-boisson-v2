@@ -2,6 +2,8 @@ package com.example.taxBoisson.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,18 @@ RedevableService redevableService;
 	public List<TypeRedevable> findAll() {
 		// TODO Auto-generated method stub
 		return typeRedevableDao.findAll();
+	}
+
+	@Override
+	@Transactional
+	public int deleteByLibelle(String libelle) {
+		if(findByLibelle(libelle)==null)
+			return -1;
+		else {
+			typeRedevableDao.deleteByLibelle(libelle);
+			return 1;
+		}
+		
 	}
 
 	

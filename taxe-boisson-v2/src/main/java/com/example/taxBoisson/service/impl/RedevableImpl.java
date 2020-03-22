@@ -3,6 +3,8 @@ package com.example.taxBoisson.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,15 @@ import com.example.taxBoisson.dao.RedevableDao;
 @Service
 public class RedevableImpl implements RedevableService {
 	@Autowired
-	public RedevableDao redevableDao;
-	@Autowired
-	public TypeRedevableService typeRedevableService;
-	@Autowired
-	QuartierService quartierService;
 
+	private RedevableDao redevableDao;
+	@Autowired
+	private TypeRedevableService typeRedevableService;
+	@Autowired
+	private QuartierService quartierService;
+
+	
+	
 	@Override
 	public Redevable findByIdentifiant(String identifiant) {
 		// TODO Auto-generated method stub
@@ -48,6 +53,7 @@ public class RedevableImpl implements RedevableService {
 			
 		
 	}
+
 
 	@Override
 	public List<Redevable> findByTypeRedevable(String libelle) {
@@ -73,6 +79,17 @@ public class RedevableImpl implements RedevableService {
       }
       
 		return redevables;
+	}
+	@Override
+	@Transactional
+	public int deleteByIdentifiant(String identifiant) {
+	if(findByIdentifiant(identifiant)==null)
+		return -1;
+	else {
+		redevableDao.deleteByIdentifiant(identifiant);
+		return 1;
+	}
+		
 	}
 	
 

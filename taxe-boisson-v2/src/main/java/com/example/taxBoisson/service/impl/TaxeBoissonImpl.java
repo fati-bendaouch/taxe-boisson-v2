@@ -86,8 +86,10 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	}
 
 	@Override
-	public List<Locale> findByTrimBetweenAndAnneeBetween(int trimMin, int trimMax, int anneeMin, int anneeMax) {
+	public List<TaxeBoisson> findByTrimBetweenAndAnneeBetween(int trimMin, int trimMax, int anneeMin, int anneeMax) {
 		return taxeBoissonDao.findByTrimBetweenAndAnneeBetween(trimMin, trimMax, anneeMin, anneeMax);
 	}
+
+	
 
 }

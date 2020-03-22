@@ -29,7 +29,9 @@ public class Quartier  implements Serializable {
 	private String nom;
 	@OneToMany(mappedBy = "quartier")
 	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-  private List<Rue> rues;
+
+	private List<Rue> rues;
+
 	@ManyToOne
 	private Secteur secteur;
 	

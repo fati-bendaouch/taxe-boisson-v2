@@ -8,4 +8,6 @@ public interface TypeRedevableService {
 public TypeRedevable findByLibelle(String libelle);
 public int save(TypeRedevable typeRedevable);
 public List<TypeRedevable> findAll();	
+public int deleteByLibelle(String libelle);
+
 }

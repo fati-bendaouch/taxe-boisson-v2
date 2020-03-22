@@ -10,5 +10,5 @@ public interface  TaxeBoissonService {
 	public int simulation(TaxeBoisson taxeBoisson);
 
 	public  int saveOrSimuler(TaxeBoisson taxeBoisson,boolean simuler);
-	public List<Locale> findByTrimBetweenAndAnneeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
+	public List<TaxeBoisson> findByTrimBetweenAndAnneeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
 }

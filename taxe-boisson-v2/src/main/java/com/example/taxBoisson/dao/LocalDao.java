@@ -16,4 +16,5 @@ public interface  LocalDao extends JpaRepository<Locale ,Long> {
 	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(String nom,String libelle);
 	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
 
+	public int deleteByReference(String reference);
 }

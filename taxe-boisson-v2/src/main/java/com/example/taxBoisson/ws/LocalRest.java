@@ -3,6 +3,7 @@ package com.example.taxBoisson.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,25 +19,31 @@ import com.example.taxBoisson.service.facade.LocaleService;
 public class LocalRest {
 	@Autowired
 	private LocaleService localService;
+
 	@GetMapping("/trimMin/{trimMin}/trimMax/{trimMax}/anneeMin/{anneeMin}/anneeMax/{anneeMax}")
-	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(@PathVariable int trimMin,@PathVariable int trimMax,@PathVariable int anneeMin,
-			@PathVariable int anneeMax) {
+	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(@PathVariable int trimMin,
+			@PathVariable int trimMax, @PathVariable int anneeMin, @PathVariable int anneeMax) {
 		return localService.findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(trimMin, trimMax, anneeMin,
 				anneeMax);
 	}
+
 	@GetMapping("/rue/nom/{nom}/categorie/{libelle}")
-	public List<Locale> findByRueNomAndCategorieLibelle(@PathVariable String nom,@PathVariable String libelle) {
+	public List<Locale> findByRueNomAndCategorieLibelle(@PathVariable String nom, @PathVariable String libelle) {
 		return localService.findByRueNomAndCategorieLibelle(nom, libelle);
 	}
+
 	@GetMapping("/rue/quartier/{nom}/categorie/{libelle}")
-	public List<Locale> findByRueQuartierNomAndCategorieLibelle(@PathVariable String nom,@PathVariable String libelle) {
+	public List<Locale> findByRueQuartierNomAndCategorieLibelle(@PathVariable String nom,
+			@PathVariable String libelle) {
 		return localService.findByRueQuartierNomAndCategorieLibelle(nom, libelle);
 	}
+
 	@GetMapping("/rue/quartier/secteur/{nom}/categorie/{libelle}")
-	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(@PathVariable String nom,@PathVariable String libelle) {
+	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(@PathVariable String nom,
+			@PathVariable String libelle) {
 		return localService.findByRueQuartierSecteurNomAndCategorieLibelle(nom, libelle);
 	}
-	
+
 	@GetMapping("/reference/{reference}")
 	public Locale findByReference(@PathVariable String reference) {
 
@@ -58,6 +65,11 @@ public class LocalRest {
 	@GetMapping("/identifiant/{identifiant}")
 	public List<Locale> findByRedevabIdentifiant(@PathVariable String identifiant) {
 		return localService.findByRedevabIdentifiant(identifiant);
+	}
+
+	@DeleteMapping("/reference/{reference}")
+	public int deleteByReference(@PathVariable String reference) {
+		return localService.deleteByReference(reference);
 	}
 
 }
