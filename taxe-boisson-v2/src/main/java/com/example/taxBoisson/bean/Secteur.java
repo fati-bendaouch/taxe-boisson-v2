@@ -32,7 +32,8 @@ public class Secteur implements Serializable {
 	private String nom;
 	@OneToMany(mappedBy = "secteur")
 	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-    private List<Quartier> quartiers;
+
+   private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
 	}

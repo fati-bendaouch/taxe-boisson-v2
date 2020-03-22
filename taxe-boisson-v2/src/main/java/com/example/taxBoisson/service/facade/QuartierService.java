@@ -9,4 +9,6 @@ public Quartier findByNom(String nom);
 List<Quartier> findAll();
 public int save(Quartier quartier);
 public List<Quartier> findBySecteurNom(String nom);
+public int deleteByNom(String nom);
+
 }

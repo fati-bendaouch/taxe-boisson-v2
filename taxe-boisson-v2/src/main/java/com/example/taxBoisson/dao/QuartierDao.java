@@ -7,5 +7,6 @@ import com.example.taxBoisson.bean.Quartier;
 
 @Repository
 public interface QuartierDao extends JpaRepository<Quartier, Long> {
-public Quartier findByNom(String Nom);
+public Quartier findByNom(String nom);
+public int deleteByNom(String nom);
 }

@@ -10,5 +10,5 @@ public interface RedevableDao extends JpaRepository<Redevable, Long> {
 	
 public Redevable findByIdentifiant(String identifiant );
 public List<Redevable> findByTypeRedevable(String libelle);
-
+public int deleteByIdentifiant(String identifiant);
 }

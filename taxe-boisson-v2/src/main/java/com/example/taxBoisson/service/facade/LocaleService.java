@@ -9,4 +9,6 @@ public interface LocaleService {
 	public int  save(Locale locale);
 	public List<Locale> findAll();
 	public List<Locale> findByRedevabIdentifiant(String identifiant);
+	public int deleteByReference(String reference);
+
 }

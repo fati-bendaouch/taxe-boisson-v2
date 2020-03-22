@@ -3,6 +3,8 @@ package com.example.taxBoisson.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,9 +45,6 @@ public class LocaleServiceImpul implements LocaleService {
 		return localedao.findAll();
 	}
 
-	
-	
-
 	@Override
 	public List<Locale> findByRedevabIdentifiant(String identifiant) {
 		Redevable redevable= redevableService.findByIdentifiant(identifiant);
@@ -57,8 +56,21 @@ public class LocaleServiceImpul implements LocaleService {
 		}
 		return locales2;
 	}
+
+	@Override
+	@Transactional
+	public int deleteByReference(String reference) {
+		if(findByReference(reference)==null)
+			return -1;
+		else {
+			localedao.deleteByReference(reference);
+			return 1;
+		}
+	}
 }
 	
+
+
 
 
 	

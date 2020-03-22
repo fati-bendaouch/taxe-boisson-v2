@@ -10,4 +10,6 @@ public List<Redevable> findAll();
 public int save(Redevable redevable);
 public List<Redevable> findByTypeRedevable(String libelle);
 public List<Redevable> findByQuartier(String nom);
+public int deleteByIdentifiant(String identifiant);
+
 }
