@@ -34,7 +34,7 @@ public class TaxeBoisson  implements Serializable {
 	private double profit;
 	@ManyToOne
 	private TauxTaxeBoisson tauxTaxeBoisson;
-	@JsonFormat(shape = Shape.STRING, pattern = "dd-MM-Y YYY")
+	@JsonFormat(shape = Shape.STRING, pattern = "dd-MM-YYYY")
 	private Date datePresentation;
 	public Date getDatePresentation() {
 		return datePresentation;

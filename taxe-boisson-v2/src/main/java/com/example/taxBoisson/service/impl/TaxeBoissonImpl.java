@@ -13,10 +13,6 @@ import com.example.taxBoisson.dao.LocalDao;
 import com.example.taxBoisson.dao.RedevableDao;
 import com.example.taxBoisson.dao.TauxTaxeBoissonDao;
 import com.example.taxBoisson.dao.TaxeBoissonDao;
-import com.example.taxBoisson.service.facade.CategorieService;
-import com.example.taxBoisson.service.facade.LocaleService;
-import com.example.taxBoisson.service.facade.RedevableService;
-import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
 import com.example.taxBoisson.service.facade.TaxeBoissonService;
 import com.example.taxBoisson.service.util.DateUtil;
 
@@ -34,14 +30,7 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	@Autowired
 	private TauxTaxeBoissonDao tauxTaxeBoissonDao;
 
-	@Autowired
-	private LocaleService localeService;
-	@Autowired
-	private RedevableService redevableService;
-	@Autowired
-	private TauxTaxeBoissonService tauxTaxeBoissonService;
-	@Autowired
-	private CategorieService categorieService;
+
 
 	public int saveOrSimuler(TaxeBoisson taxeBoisson, boolean simuler) {
 		Locale locale = localedao.getOne(taxeBoisson.getLocale().getId());
@@ -70,9 +59,12 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 			taxeBoisson.setMontantRetard(
 					taxeBoisson.getTauxTaxeBoisson().getPourcentageRetard() * taxeBoisson.getProfit());
 			taxeBoisson.setMontantTotale(taxeBoisson.getMontantBase() + taxeBoisson.getMontantRetard());
-			if (!simuler)
+			if (simuler == false) {
 				taxeBoissonDao.save(taxeBoisson);
-			return 1;
+				return 1;
+			} else {
+				return 2;
+			}
 		}
 	}
 
@@ -80,16 +72,17 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 		return saveOrSimuler(taxeBoisson, false);
 	}
 
-	@Override
-	public int simulation(TaxeBoisson taxeBoisson) {
-		return saveOrSimuler(taxeBoisson, true);
-	}
+
 
 	@Override
 	public List<TaxeBoisson> findByTrimBetweenAndAnneeBetween(int trimMin, int trimMax, int anneeMin, int anneeMax) {
 		return taxeBoissonDao.findByTrimBetweenAndAnneeBetween(trimMin, trimMax, anneeMin, anneeMax);
 	}
 
-	
+	@Override 
+	public TaxeBoisson simulation(TaxeBoisson taxeBoisson) {
+		saveOrSimuler(taxeBoisson, true);
+		return taxeBoisson;
+	}
 
 }
