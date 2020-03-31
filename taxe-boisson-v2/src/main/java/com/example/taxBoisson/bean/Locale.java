@@ -32,13 +32,13 @@ public class Locale implements Serializable {
 	/**
  
  */
-public Categorie getCategorie() {
+   public Categorie getCategorie() {
 	return categorie;
-}
+     }
 /**
  * @param categorie the categorie to set
  */
-public void setCategorie(Categorie categorie) {
+    public void setCategorie(Categorie categorie) {
 	this.categorie = categorie;
 }
 	public int getDernierTrimPaye() {

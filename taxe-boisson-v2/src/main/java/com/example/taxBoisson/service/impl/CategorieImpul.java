@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Categorie;
+import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
 import com.example.taxBoisson.dao.CategorieDao;
 import com.example.taxBoisson.dao.TauxTaxeBoissonDao;
 import com.example.taxBoisson.service.facade.CategorieService;
+import com.example.taxBoisson.service.facade.LocaleService;
 import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
 
 @Service
@@ -18,7 +20,8 @@ public class CategorieImpul implements CategorieService{
 	public CategorieDao categorieDao;
 	@Autowired
 	 private TauxTaxeBoissonService tauxTaxeBoisson;
-	
+	@Autowired
+	public LocaleService localeService;
 	@Override
 	public List<Categorie> findByLibelle(String libelle) {
 		return categorieDao.findByLibelle(libelle);
@@ -40,9 +43,9 @@ public int save (Categorie categorie ) {
 	}
 	
 	
+}	
 		
 		
-		
-	}
+	
 
 

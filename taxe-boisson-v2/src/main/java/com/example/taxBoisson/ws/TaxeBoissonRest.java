@@ -1,6 +1,7 @@
 package com.example.taxBoisson.ws;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import com.example.taxBoisson.bean.TaxeBoisson;
 import com.example.taxBoisson.service.facade.TaxeBoissonService;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("TaxeBoisson/taxeBoisson")
 public class TaxeBoissonRest {
 	@Autowired

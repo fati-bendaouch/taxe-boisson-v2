@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.Categorie;
+import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.service.facade.CategorieService;
 
 @RestController
@@ -32,6 +33,5 @@ public class CategorieRest {
 	public List<Categorie> findAll() {
 		return categorieService.findAll();
 	}
-	
 
 }
