@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class TypeRedevable implements Serializable {
@@ -71,6 +70,11 @@ public class TypeRedevable implements Serializable {
 		} else if (!libelle.equals(other.libelle))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TypeRedevable [id=" + id + ", libelle=" + libelle + "]";
 	}
 
 }

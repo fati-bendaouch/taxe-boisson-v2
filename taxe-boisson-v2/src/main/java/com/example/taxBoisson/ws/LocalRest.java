@@ -19,6 +19,18 @@ import com.example.taxBoisson.service.facade.LocaleService;
 public class LocalRest {
 	@Autowired
 	private LocaleService localService;
+//	public List<Locale> findByRueNom(String nom) {
+//		return localService.findByRueNom(nom);
+//	}
+	@GetMapping("/notification/locale")
+	public List<Locale> findByDernierTrimPayerAndDernierAnneePayer() {
+		return localService.findByDernierTrimPayerAndDernierAnneePayer();
+	}
+
+	@GetMapping("/dernierTrimPaye/{dernierTrimPaye}")
+	public List<Locale> findByDernierTrimPaye(int dernierTrimPaye) {
+		return localService.findByDernierTrimPaye(dernierTrimPaye);
+	}
 
 	@GetMapping("/trimMin/{trimMin}/trimMax/{trimMax}/anneeMin/{anneeMin}/anneeMax/{anneeMax}")
 	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(@PathVariable int trimMin,

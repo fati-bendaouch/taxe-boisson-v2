@@ -11,5 +11,7 @@ public interface NotificationService {
 	int create(Notification notification);
 	int delete(Notification notification);
 	int update(Notification notification);
+	void notifierTout(int trimMin,int trimMax, int anneeMin, int anneeMax);
+	List<Notification> findAll();
 	
 }

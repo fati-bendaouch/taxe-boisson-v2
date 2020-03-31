@@ -13,6 +13,7 @@ import com.example.taxBoisson.dao.LocalDao;
 import com.example.taxBoisson.dao.RedevableDao;
 import com.example.taxBoisson.dao.TauxTaxeBoissonDao;
 import com.example.taxBoisson.dao.TaxeBoissonDao;
+import com.example.taxBoisson.service.facade.LocaleService;
 import com.example.taxBoisson.service.facade.TaxeBoissonService;
 import com.example.taxBoisson.service.util.DateUtil;
 
@@ -29,6 +30,9 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 
 	@Autowired
 	private TauxTaxeBoissonDao tauxTaxeBoissonDao;
+	
+	@Autowired
+	private LocaleService localeService;
 
 
 
@@ -83,6 +87,13 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	public TaxeBoisson simulation(TaxeBoisson taxeBoisson) {
 		saveOrSimuler(taxeBoisson, true);
 		return taxeBoisson;
+	}
+
+	@Override
+	public List<TaxeBoisson> findByLocaleReference(String reference) {
+		List<Locale> loc = localeService.findAll();
+		System.out.println(loc);
+		return taxeBoissonDao.findByLocaleReference(reference);
 	}
 
 }

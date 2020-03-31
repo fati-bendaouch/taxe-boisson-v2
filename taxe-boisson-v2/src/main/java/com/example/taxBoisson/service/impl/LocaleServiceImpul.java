@@ -1,6 +1,7 @@
 package com.example.taxBoisson.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.taxBoisson.bean.Locale;
+import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.dao.LocalDao;
 import com.example.taxBoisson.service.facade.LocaleService;
 import com.example.taxBoisson.service.facade.RedevableService;
-import com.example.taxBoisson.bean.Redevable;
+import com.example.taxBoisson.service.util.DateUtil;
 
 @Service
 public class LocaleServiceImpul implements LocaleService {
@@ -86,5 +88,22 @@ public class LocaleServiceImpul implements LocaleService {
 			localedao.deleteByReference(reference);
 			return 1;
 		}
+	}
+
+	@Override
+	public List<Locale> findByRueNom(String nom) {
+		return localedao.findByRueNom(nom);
+	}
+
+	@Override
+	public List<Locale> findByDernierTrimPaye(int dernierTrimPaye) {
+		return localedao.findByDernierTrimPaye(dernierTrimPaye);
+	}
+
+	@Override
+	public List<Locale> findByDernierTrimPayerAndDernierAnneePayer() {
+		System.out.println("annee: "+DateUtil.getAnneeFromDate(new Date()));
+		System.out.println("trim: "+DateUtil.getTrimFormDate(new Date()));
+		return localedao.findByDernierTrimPayerAndDernierAnneePayer(DateUtil.getTrimFormDate(new Date()), DateUtil.getAnneeFromDate(new Date()));
 	}
 }

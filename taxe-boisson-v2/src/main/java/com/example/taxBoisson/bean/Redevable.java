@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 
 @Entity
@@ -101,6 +100,11 @@ public class Redevable  implements Serializable {
 		} else if (!typeRedevable.equals(other.typeRedevable))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Redevable [id=" + id + ", nom=" + nom + ", identifiant=" + identifiant + ", typeRedevable="
+				+ typeRedevable + "]";
 	}
 	
 	

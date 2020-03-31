@@ -12,9 +12,7 @@ import com.example.taxBoisson.bean.Secteur;
 import com.example.taxBoisson.dao.QuartierDao;
 import com.example.taxBoisson.service.facade.QuartierService;
 import com.example.taxBoisson.service.facade.SecteurService;
-import com.example.taxBoisson.bean.Quartier;
-import com.example.taxBoisson.bean.Secteur;
-import com.example.taxBoisson.dao.QuartierDao;
+
 
 @Service
 public class QuartierServiceImpl implements QuartierService {
@@ -48,7 +46,7 @@ public class QuartierServiceImpl implements QuartierService {
 	public List<Quartier> findAll() {
 		return quartierdao.findAll();
 	}
-
+ 
 	@Override
 	public List<Quartier> findBySecteurNom(String nom) {
 		Secteur secteur = secteurService.findByNom(nom);

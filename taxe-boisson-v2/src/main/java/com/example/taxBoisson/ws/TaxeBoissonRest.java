@@ -1,6 +1,10 @@
 package com.example.taxBoisson.ws;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +18,20 @@ import com.example.taxBoisson.service.facade.TaxeBoissonService;
 public class TaxeBoissonRest {
 	@Autowired
 	private TaxeBoissonService taxeBoissonService;
-	@PostMapping("/")
-	public int save(@RequestBody TaxeBoisson taxeBoisson) {
-		return  taxeBoissonService.save(taxeBoisson);
+	@GetMapping("/locale/{reference}")
+	public List<TaxeBoisson> findByLocaleReference(@PathVariable String reference) {
+		return taxeBoissonService.findByLocaleReference(reference);
 	}
-	
-	@PostMapping("/Simulation/")
-	public TaxeBoisson  simulation(@RequestBody TaxeBoisson taxeBoisson) {
-		return taxeBoissonService.simulation(taxeBoisson);
-		
-	}
+
+//	@PostMapping("/")
+//	public int save(@RequestBody TaxeBoisson taxeBoisson) {
+//		return  taxeBoissonService.save(taxeBoisson);
+//	}
+//	
+//	@PostMapping("/Simulation/")
+//	public TaxeBoisson  simulation(@RequestBody TaxeBoisson taxeBoisson) {
+//		return taxeBoissonService.simulation(taxeBoisson);
+//		
+//	}
 	
 }

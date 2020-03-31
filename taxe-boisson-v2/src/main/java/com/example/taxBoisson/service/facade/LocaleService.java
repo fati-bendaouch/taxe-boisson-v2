@@ -14,5 +14,8 @@ public interface LocaleService {
 	public List<Locale> findByRueQuartierSecteurNomAndCategorieLibelle(String nom,String libelle);
 	public List<Locale> findByDernierTrimPayeBetweenAndDernierAnneePayeBetween(int trimMin,int trimMax,int anneeMin, int anneeMax);
 	public int deleteByReference(String reference);
+	public List<Locale> findByRueNom(String nom);
+	public List<Locale> findByDernierTrimPaye(int dernierTrimPaye);
+	public List<Locale> findByDernierTrimPayerAndDernierAnneePayer();
 
 }

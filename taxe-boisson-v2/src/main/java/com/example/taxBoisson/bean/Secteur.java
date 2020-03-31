@@ -10,15 +10,11 @@ import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.persistence.OneToMany;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 public class Secteur implements Serializable {
@@ -30,10 +26,10 @@ public class Secteur implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
-	@OneToMany(mappedBy = "secteur")
-	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-
-   private List<Quartier> quartiers;
+//	@OneToMany(mappedBy = "secteur")
+//	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+//
+//   private List<Quartier> quartiers;
 	public Long getId() {
 		return id;
 	}
