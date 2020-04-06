@@ -3,6 +3,7 @@ package com.example.taxBoisson.service.facade;
 import java.util.List;
 
 import com.example.taxBoisson.bean.Categorie;
+
 import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
 

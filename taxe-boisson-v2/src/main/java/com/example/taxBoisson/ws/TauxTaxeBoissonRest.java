@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.taxBoisson.bean.TauxTaxeBoisson;
 import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
-import com.example.taxBoisson.service.impl.TauxTaxeBoissonServiceImpl;
 
 @RestController
 @RequestMapping("projet/tauxTaxeBoissonRest")

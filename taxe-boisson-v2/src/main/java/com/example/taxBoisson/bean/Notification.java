@@ -1,15 +1,13 @@
 package com.example.taxBoisson.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 @Entity
 public class Notification  implements Serializable {
 	/**
@@ -132,6 +130,17 @@ public class Notification  implements Serializable {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Notification [id=" + id + ", anneeMin=" + anneeMin + ", anneeMax=" + anneeMax + ", trimMin=" + trimMin
+				+ ", trimMax=" + trimMax + ", montantBase=" + montantBase + ", montantRetard=" + montantRetard
+				+ ", moisRetard=" + moisRetard + ", montantTotale=" + montantTotale + ", locale=" + locale
+				+ ", profit=" + profit + "]";
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 	
 }

@@ -12,11 +12,12 @@ import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.Quartier;
 import com.example.taxBoisson.bean.Redevable;
 import com.example.taxBoisson.dao.RedevableDao;
+import com.example.taxBoisson.service.facade.LocaleService;
 import com.example.taxBoisson.service.facade.QuartierService;
 import com.example.taxBoisson.service.facade.RedevableService;
+import com.example.taxBoisson.service.facade.RueService;
 import com.example.taxBoisson.service.facade.TypeRedevableService;
 import com.example.taxBoisson.bean.Rue;
-import com.example.taxBoisson.dao.RedevableDao;
 
 @Service
 public class RedevableImpl implements RedevableService {
@@ -27,8 +28,10 @@ public class RedevableImpl implements RedevableService {
 	private TypeRedevableService typeRedevableService;
 	@Autowired
 	private QuartierService quartierService;
-
-	
+	@Autowired 
+	private RueService rueService;
+	@Autowired
+	private LocaleService localeService;
 	
 	@Override
 	public Redevable findByIdentifiant(String identifiant) {
@@ -72,8 +75,9 @@ public class RedevableImpl implements RedevableService {
 	public List<Redevable> findByQuartier(String nom) {
       Quartier quartier=quartierService.findByNom(nom);
       List<Redevable> redevables=new ArrayList<Redevable>();
-      for(Rue r:quartier.getRues()) {
-    	  for(Locale l:r.getLocales()) {
+      for(Rue r:rueService.findByQuartierNom(quartier.getNom())) {
+    	  List<Locale> locales = localeService.findByRueNom(r.getNom());
+    	  for(Locale l:locales) {
     		 redevables.add(l.getRedevable()) ;
     	  }
       }

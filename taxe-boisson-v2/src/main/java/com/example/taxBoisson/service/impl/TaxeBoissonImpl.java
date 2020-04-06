@@ -1,7 +1,10 @@
 package com.example.taxBoisson.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.taxBoisson.bean.Locale;
 import com.example.taxBoisson.bean.Redevable;
@@ -11,10 +14,7 @@ import com.example.taxBoisson.dao.LocalDao;
 import com.example.taxBoisson.dao.RedevableDao;
 import com.example.taxBoisson.dao.TauxTaxeBoissonDao;
 import com.example.taxBoisson.dao.TaxeBoissonDao;
-import com.example.taxBoisson.service.facade.CategorieService;
 import com.example.taxBoisson.service.facade.LocaleService;
-import com.example.taxBoisson.service.facade.RedevableService;
-import com.example.taxBoisson.service.facade.TauxTaxeBoissonService;
 import com.example.taxBoisson.service.facade.TaxeBoissonService;
 import com.example.taxBoisson.service.util.DateUtil;
 
@@ -24,40 +24,29 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	private TaxeBoissonDao taxeBoissonDao;
 
 	@Autowired
-	private LocalDao localedao;
-
-	@Autowired
-	private RedevableDao redevableDao;
+	private RedevableDao redevableService;
 
 	@Autowired
 	private TauxTaxeBoissonDao tauxTaxeBoissonDao;
-
+	
 	@Autowired
 	private LocaleService localeService;
-	@Autowired
-	private RedevableService redevableService;
-	@Autowired
-	private TauxTaxeBoissonService tauxTaxeBoissonService;
-	@Autowired
-	private CategorieService categorieService;
-
+	
 	public int saveOrSimuler(TaxeBoisson taxeBoisson, boolean simuler) {
-		Locale locale = localedao.getOne(taxeBoisson.getLocale().getId());
-		Redevable redevable = redevableDao.getOne(taxeBoisson.getRedevable().getId());
-
+		Locale locale = localeService.findByReference(taxeBoisson.getLocale().getReference());
+		Redevable redevable = redevableService.findByIdentifiant(taxeBoisson.getRedevable().getIdentifiant());
 		if (locale == null) {
 			return -1;
 		} else if (redevable == null) {
 			return -3;
 		}
-
 		TauxTaxeBoisson tauxTaxeBoisson = tauxTaxeBoissonDao.findByCategorieId(locale.getCategorie().getId());
 		System.out.println("getCategorie +===" + locale.getCategorie().getId());
 		if (tauxTaxeBoisson == null) {
 			return -2;
 		} else {
 			taxeBoisson.setMoisRetard(DateUtil.calcDiffMois(taxeBoisson.getTrim(), taxeBoisson.getAnnee(),
-					taxeBoisson.getDatePresentation()));
+			taxeBoisson.getDatePresentation()));
 			taxeBoisson.setTrim(taxeBoisson.getTrim());
 			taxeBoisson.setAnnee(taxeBoisson.getAnnee());
 			taxeBoisson.setProfit(taxeBoisson.getProfit());
@@ -66,7 +55,7 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 			taxeBoisson.setTauxTaxeBoisson(tauxTaxeBoisson);
 			taxeBoisson.setMontantBase(taxeBoisson.getTauxTaxeBoisson().getPourcentageBase() * taxeBoisson.getProfit());
 			taxeBoisson.setMontantRetard(
-					taxeBoisson.getTauxTaxeBoisson().getPourcentageRetard() * taxeBoisson.getProfit());
+			taxeBoisson.getTauxTaxeBoisson().getPourcentageRetard() * taxeBoisson.getProfit());
 			taxeBoisson.setMontantTotale(taxeBoisson.getMontantBase() + taxeBoisson.getMontantRetard());
 			if (simuler == false) {
 				taxeBoissonDao.save(taxeBoisson);
@@ -78,15 +67,33 @@ public class TaxeBoissonImpl implements TaxeBoissonService {
 	}
 
 	public int save(TaxeBoisson taxeBoisson) {
-		int res = saveOrSimuler(taxeBoisson, false);
-		return res;
-
+		return saveOrSimuler(taxeBoisson, false);
 	}
 
+
+
 	@Override
+	public List<TaxeBoisson> findByTrimBetweenAndAnneeBetween(int trimMin, int trimMax, int anneeMin, int anneeMax) {
+		return taxeBoissonDao.findByTrimBetweenAndAnneeBetween(trimMin, trimMax, anneeMin, anneeMax);
+	}
+
+	@Override 
 	public TaxeBoisson simulation(TaxeBoisson taxeBoisson) {
 		saveOrSimuler(taxeBoisson, true);
 		return taxeBoisson;
 	}
 
+	@Override
+	public List<TaxeBoisson> findByLocaleReference(String reference) {
+		List<Locale> loc = localeService.findAll();
+		System.out.println(loc);
+		return taxeBoissonDao.findByLocaleReference(reference);
+	}
+	@Transactional
+	@Override
+	public void deleteByLocaleReference(String reference) {
+		 taxeBoissonDao.deleteByLocaleReference(reference);
+		
+	}
 }
+	

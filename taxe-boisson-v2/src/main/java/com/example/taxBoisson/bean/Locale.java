@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class Locale implements Serializable {
@@ -16,7 +15,7 @@ public class Locale implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String reference;
 	@ManyToOne
@@ -32,15 +31,14 @@ public class Locale implements Serializable {
 	/**
  
  */
-   public Categorie getCategorie() {
-	return categorie;
-     }
-/**
- * @param categorie the categorie to set
- */
-    public void setCategorie(Categorie categorie) {
-	this.categorie = categorie;
-}
+   
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	public int getDernierTrimPaye() {
 		return dernierTrimPaye;
 	}
@@ -116,6 +114,30 @@ public class Locale implements Serializable {
 			return false;
 
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Locale [id=" + id + ", reference=" + reference + ", redevable=" + redevable + ", rue=" + rue
+				+ ", dernierTrimPaye=" + dernierTrimPaye + ", dernierAnneePaye=" + dernierAnneePaye + ", categorie="
+				+ categorie + "]";
+	}
+
+	public Locale(Long id, String reference, Redevable redevable, Rue rue, int dernierTrimPaye, int dernierAnneePaye,
+			Categorie categorie) {
+		super();
+		this.id = id;
+		this.reference = reference;
+		this.redevable = redevable;
+		this.rue = rue;
+		this.dernierTrimPaye = dernierTrimPaye;
+		this.dernierAnneePaye = dernierAnneePaye;
+		this.categorie = categorie;
+	}
+
+	public Locale() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }

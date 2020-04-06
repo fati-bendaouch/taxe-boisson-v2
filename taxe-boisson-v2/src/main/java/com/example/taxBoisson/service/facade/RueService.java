@@ -9,5 +9,6 @@ public interface RueService {
 	public List<Rue> findAll();
 	public int deleteByNom( String nom) ;
 	public int find(String rue, String redevable);
+	public List<Rue> findByQuartierNom(String nom);
 	
 }

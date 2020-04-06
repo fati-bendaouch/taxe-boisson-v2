@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -26,8 +25,8 @@ public class Rue  implements Serializable {
 	@OneToMany(mappedBy = "rue")
 
    
-	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
-	private List<Locale> locales;
+//	@JsonProperty(access=JsonProperty.Access.WRITE_ONLY)
+//	private List<Locale> locales;
 	public Long getId() {
 		return id;
 	}
@@ -46,18 +45,18 @@ public class Rue  implements Serializable {
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;
 	}
-	public List<Locale> getLocales() {
-		return locales;
-	}
-	public void setLocales(List<Locale> locales) {
-		this.locales = locales;
-	}
+//	public List<Locale> getLocales() {
+//		return locales;
+//	}
+//	public void setLocales(List<Locale> locales) {
+//		this.locales = locales;
+//	}
 	public Rue(Long id, String nom, Quartier quartier, List<Locale> locales) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.quartier = quartier;
-		this.locales = locales;
+//		this.locales = locales;
 	}
 	public Rue() {
 		super();
@@ -65,7 +64,7 @@ public class Rue  implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Rue [id=" + id + ", nom=" + nom + ", quartier=" + quartier + ", locales=" + locales + "]";
+		return "Rue [id=" + id + ", nom=" + nom + ", quartier=" + quartier  + "]";
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -75,9 +74,6 @@ public class Rue  implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((locales == null) ? 0 : locales.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + ((quartier == null) ? 0 : quartier.hashCode());
 		return result;
 	}
 	@Override
@@ -94,23 +90,9 @@ public class Rue  implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (locales == null) {
-			if (other.locales != null)
-				return false;
-		} else if (!locales.equals(other.locales))
-			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		if (quartier == null) {
-			if (other.quartier != null)
-				return false;
-		} else if (!quartier.equals(other.quartier))
-			return false;
 		return true;
 	}
+
 	
 	
 	
